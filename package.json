@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/agusduartevml/qa-automation-agustinaduarte.git"
@@ -19,6 +17,7 @@
   },
   "homepage": "https://github.com/agusduartevml/qa-automation-agustinaduarte#readme",
   "devDependencies": {
+    "@playwright/test": "^1.64.0",
     "@types/node": "^26.6.3",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
