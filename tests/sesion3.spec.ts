@@ -19,5 +19,5 @@ test ('marcar tarea', async ({page}) => {
   await page.getByPlaceholder('What needs to be done?').press('Enter');
   await expect (page.getByText('clase 3')).toBeVisible();
   await page.getByRole('checkbox', {name: 'Toggle Todo'}).click();
-  await expect (page.getByRole ('checkbox', {name: 'Toggle Todo'})).toBeChecked();
+  await expect (page.getByText('checkbox', {name: 'Toggle Todo'})).toBeChecked();
 });
