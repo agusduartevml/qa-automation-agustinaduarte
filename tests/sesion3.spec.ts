@@ -1,23 +1,13 @@
 import { test, expect } from '@playwright/test';
-test('has title', async ({ page }) => { 
-  await page.goto('https://demo.playwright.dev/todomvc/');
+import { ToDoPage } from '../pages/todo.page';
 
-  await expect(page).toHaveTitle(/TodoMVC/);
+test('tarea completa', async ({ page }) => { 
+  const todoPage = new ToDoPage(page);
+  await todoPage.open();
+ await expect(page).toHaveTitle(/TodoMVC/); 
+  await todoPage.addTask('clase 3')
+  await expect(todoPage.newTodo).toBeVisible();
+    await todoPage.completeTask();
+  await expect(todoPage.newCheckbox).toBeChecked();
 });
 
-test('agregar tarea', async ({page}) => {
-  await page.goto('https://demo.playwright.dev/todomvc/#/');
-
- await page.getByPlaceholder('What needs to be done?').fill('clase 3');
- await page.getByPlaceholder('What needs to be done?').press('Enter');
- await expect (page.getByText('clase 3')).toBeVisible();
-});
-
-test ('marcar tarea', async ({page}) => {
-    await page.goto('https://demo.playwright.dev/todomvc/#/');
-     await page.getByPlaceholder('What needs to be done?').fill('clase 3');
-  await page.getByPlaceholder('What needs to be done?').press('Enter');
-  await expect (page.getByText('clase 3')).toBeVisible();
-  await page.getByRole('checkbox', {name: 'Toggle Todo'}).click();
-  await expect (page.getByText('checkbox', {name: 'Toggle Todo'})).toBeChecked();
-});
